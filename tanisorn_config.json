@@ -12,7 +12,7 @@
         "train_annot_folder":   "/home/palmy/PycharmProjects/DATA/Tanisorn/xml/",
           
         "train_times":          10,
-        "pretrained_weights":   "tanisorn_license_plate_1.h5",
+        "pretrained_weights":   "/home/palmy/PycharmProjects/weights/tanisorn_license_plate_1.h5",
         "batch_size":           32,
         "learning_rate":        1e-5,
         "nb_epoch":             50,
@@ -23,7 +23,7 @@
         "coord_scale":          1.0,
         "class_scale":          1.0,
 
-        "saved_weights_name":   "tanisorn_license_plate_1.h5",
+        "saved_weights_name":   "/home/palmy/PycharmProjects/weights/tanisorn_license_plate_1.h5",
         "debug":                false
     },
 

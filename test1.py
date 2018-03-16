@@ -66,7 +66,7 @@ def _main_():
         ###############################
         #   Start the training process
         ###############################
-    image = cv2.imread('/home/palmy/PycharmProjects/DATA/Tanisorn/imgCarResize/CAR0043.jpg')
+    image = cv2.imread('/home/palmy/PycharmProjects/DATA/Tanisorn/imgCarResize/CAR9753.jpg')
     image = cv2.resize(image, (416, 416))
 
     boxes = yolo.predict(image)
@@ -76,6 +76,21 @@ def _main_():
             sc = box.score
 
     print sc
+    box = boxes[0]
+    xmin = int((box.x - box.w / 2) * image.shape[1])
+    xmax = int((box.x + box.w / 2) * image.shape[1])
+    ymin = int((box.y - box.h / 2) * image.shape[0])
+    ymax = int((box.y + box.h / 2) * image.shape[0])
+    width = xmax-xmin
+    height = ymax-ymin
+
+    crop_img = image[ymin:ymax, xmin:xmax]
+    # cv2.rectangle(crop_img, ((int(0.45*width)), 0), ((int(0.66*width)), int(height*0.75)), (0, 255, 0), 3)
+    # cv2.rectangle(crop_img, ((int(0.56*width)), 0), ((int(0.78*width)), int(height*0.75)), (0, 255, 0), 3)
+    # cv2.rectangle(crop_img, ((int(0.67*width)), 0), ((int(0.89*width)), int(height*0.75)), (0, 255, 0), 3)
+    cv2.rectangle(crop_img, ((int(0.67*width)), 0), ((int(0.89*width)), int(height*0.75)), (0, 255, 0), 3)
+
+    cv2.imwrite('lp.jpg', crop_img)
     image = draw_boxes(image, boxes, config['model']['labels'])
     cv2.imwrite('car' + '_detected' + '.jpg', image)
 
