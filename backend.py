@@ -11,7 +11,7 @@ from keras.applications.resnet50 import ResNet50
 FULL_YOLO_FEATURE_PATH  = "/home/palmy/PycharmProjects/weights/full_yolo_backend.h5"   # should be hosted on a server
 TINY_YOLO_FEATURE_PATH  = "/home/palmy/PycharmProjects/weights/tiny_yolo_backend.h5"   # should be hosted on a server
 SQUEEZENET_FEATURE_PATH = "squeezenet_features.h5"  # should be hosted on a server
-MOBILENET_FEATURE_PATH  = "/home/palmy/PycharmProjects/weights/mobilenet_backend.h5"   # should be hosted on a server
+MOBILENET_FEATURE_PATH  = "mobilenet_backend.h5"   # should be hosted on a server
 INCEPTION3_FEATURE_PATH = "inception_features.h5"   # should be hosted on a server
 VGG16_FEATURE_PATH      = "vgg16_features.h5"       # should be hosted on a server
 RESNET50_FEATURE_PATH   = "resnet50_features.h5"    # should be hosted on a server
@@ -201,7 +201,7 @@ class TinyYoloFeature(BaseFeatureExtractor):
 
         self.feature_extractor = Model(input_image, x)
         # print self.feature_extractor.summary()
-        self.feature_extractor.load_weights(TINY_YOLO_FEATURE_PATH)
+        # self.feature_extractor.load_weights(TINY_YOLO_FEATURE_PATH)
 
     def normalize(self, image):
         return image / 255.

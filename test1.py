@@ -5,6 +5,7 @@ from preprocessing import parse_annotation
 from frontend import YOLO
 import json
 from utils import draw_boxes
+from PIL import Image
 
 
 def _main_():
@@ -66,7 +67,7 @@ def _main_():
         ###############################
         #   Start the training process
         ###############################
-    image = cv2.imread('/home/palmy/PycharmProjects/DATA/Tanisorn/imgCarResize/CAR9753.jpg')
+    image = cv2.imread('/home/palm/PycharmProjects/DATA/Tanisorn/imgCarResize/CAR9753.jpg')
     image = cv2.resize(image, (416, 416))
 
     boxes = yolo.predict(image)
@@ -84,15 +85,18 @@ def _main_():
     width = xmax-xmin
     height = ymax-ymin
 
-    crop_img = image[ymin:ymax, xmin:xmax]
+    # crop_img = image[ymin:ymax, xmin:xmax]
     # cv2.rectangle(crop_img, ((int(0.45*width)), 0), ((int(0.66*width)), int(height*0.75)), (0, 255, 0), 3)
     # cv2.rectangle(crop_img, ((int(0.56*width)), 0), ((int(0.78*width)), int(height*0.75)), (0, 255, 0), 3)
     # cv2.rectangle(crop_img, ((int(0.67*width)), 0), ((int(0.89*width)), int(height*0.75)), (0, 255, 0), 3)
-    cv2.rectangle(crop_img, ((int(0.67*width)), 0), ((int(0.89*width)), int(height*0.75)), (0, 255, 0), 3)
+    # cv2.rectangle(crop_img, ((int(0.67*width)), 0), ((int(0.89*width)), int(height*0.75)), (0, 255, 0), 3)
 
-    cv2.imwrite('lp.jpg', crop_img)
+    # cv2.imwrite('lp.jpg', crop_img)
     image = draw_boxes(image, boxes, config['model']['labels'])
     cv2.imwrite('car' + '_detected' + '.jpg', image)
+    b, g, r = image.split()
+    im = Image.merge("RGB", (r, g, b))
+    im.show()
 
 
 if __name__ == '__main__':
