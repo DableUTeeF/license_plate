@@ -11,8 +11,8 @@
         "train_image_folder":   "/home/palm/PycharmProjects/DATA/Tanisorn/imgCarResize/",
         "train_annot_folder":   "/home/palm/PycharmProjects/DATA/Tanisorn/xml/",
           
-        "train_times":          10,
-        "pretrained_weights":   "",
+        "train_times":          3,
+        "pretrained_weights":   "/home/palm/PycharmProjects/weights/tanisorn_license_plate_2.h5",
         "batch_size":           10,
         "learning_rate":        1e-4,
         "nb_epoch":             50,

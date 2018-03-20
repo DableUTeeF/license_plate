@@ -49,7 +49,8 @@ from frontend import YOLO
 import json
 
 
-def _main_(args):
+if __name__ == '__main__':
+    args = 'tanisorn_config.json'
     config_path = args
 
     with open(config_path) as config_buffer:
@@ -84,7 +85,7 @@ def _main_(args):
 
     if len(overlap_labels) < len(config['model']['labels']):
         print 'Some labels have no images! Please revise the list of labels in the config.json file!'
-        return
+        pass
 
     ###############################
     #   Construct the model
@@ -123,7 +124,3 @@ def _main_(args):
                saved_weights_name=config['train']['saved_weights_name'],
                debug=config['train']['debug'])
     yolo.model.save_weights('lp.h5')
-
-
-if __name__ == '__main__':
-    _main_('tanisorn_config.json')
